@@ -1,50 +1,63 @@
 body {
-  background-image: url("../images/wow.png");
+background-image: url("../images/C.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
 
-.lamb2 {
+.cover {
+  height: auto;
+  width: 60%;
+}
+
+.lamb {
+  width: 500px;
+  height: auto;
+  display: block;
+  padding-left: 20px;
+  padding-right: 20px;
   opacity: 70%;
- height: auto;
- width: 40%;
- margin-top: 30px;
- margin-bottom: 30px;
- border: solid 5px palevioletred;
- margin: 10px;
+}
+
+.lamb2 {
+  width: 700px;
+  height: auto;
+  display: block;
+  padding-left: 20px;
+  padding-right: 20px;
+  opacity: 70%;
 }
 
 .lamb3 {
- height: auto;
- width: 30%;
- margin-top: 30px;
- margin-bottom: 30px;
- border: solid 5px palevioletred;
- margin: 10px;
+  width: 300px;
+  height: auto;
+  display: block;
+  padding-left: 20px;
+  padding-right: 20px;
+  opacity: 70%;
 }
 
+.page-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
 
 .image-wrapper {
-  height: 1000px;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+  overflow: hidden;
 }
+
 
 .image-wrapper2 {
-   display: flex;
+  display: flex;
   justify-content: center;
   margin-top: 30px;
   margin-bottom: 30px;
 }
-
-.image-wrapper3 {
-  opacity: 75%;
-   display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-
-
-
 

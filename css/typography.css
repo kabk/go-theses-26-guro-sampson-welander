@@ -1,6 +1,6 @@
 @font-face {
   font-family: "normal";
-  src: url("../font/Montserrat-VariableFont_wght.ttf") format("truetype");
+  src: url("../font/BBB-OpenSans-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -10,99 +10,36 @@
 
 @font-face {
   font-family: "biden";
-  src: url("../font/Courgette-Regular.ttf") format("truetype");
+  src: url("../font/Cambo-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "cursive";
+  src: url("../font/Edw.ttf") format("truetype");
 }
 
 
-
-
-.main {
-    margin: 0 auto;
-    color: rgb(68, 113, 114);
-}
-
-.section {
-    max-width: 50%;
-    margin: 0 auto;
-    
-    padding-bottom: 100px;
-}
-
-.article {
-    max-width: 100%; 
-    background-color: white;
-    
-}
-
-.text-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  
-}
-
-.text-overlay h1 {
-  line-height: 1.5;
-  color: palevioletred;
-  margin: 0;
-}
-
-.image-wrapper h1:first-of-type {
-  font-size: 14rem;
-  white-space: nowrap;
-  text-align: right;
-}
-
-.image-wrapper h1:last-of-type {
-  font-size: 16rem;
-  white-space: nowrap;
-  text-align: left;
-}
-
-.image-wrapper h1:nth-of-type(2) {
-  font-size: 16rem;
-  white-space: nowrap;
-  text-align: right;
-}
-
-
-
-h1 {
-    font-family: "biden", serif; 
-    font-style: normal; 
-    font-size: 1rem;
-    text-align: center;
-     color: palevioletred;
+.text-wrapper { 
+  top: 70px; left: 50%; 
+  transform: translateX(-50%) scale(1); 
+  z-index: 2000; /* higher than nav's 1000 */ 
+  position: relative; 
 }
 
 h2 {
-    font-family: "biden";  
-    font-size: 10rem;
+    font-family: "cursive";  
+    font-size: 11rem;
     text-align: center;
-    padding-top: 60px;
+    padding-top: 0px;
      margin-bottom: 10px;
-      color: palevioletred;
-}
-
-h3 {
-    font-family: "normal";
-    font-style: normal;
-    font-size: 2.5rem;
-     text-align: center;
-    margin-top: 10px;
-     margin-bottom: 30px;
-     color: palevioletred;
-     font-weight: bold;
-}
-
-.measure {     
-    font-size: 1rem;
+    color: rgb(205, 156, 180);
+ 
+  
 }
 
 .indent {  
     font-family: "normal";
-    font-style: normal;
+    font-style: bold;
     font-size: 2rem; 
     margin-top: 15px;
     margin-bottom: 15px;
@@ -113,46 +50,33 @@ h3 {
     font-style: italic;
     text-align: center;
     font-size: 2rem;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 20px;
 }
 
 .italic2 {    
     font-family: "normal";
     font-style: italic;
     text-align: center;
-    font-size: 1.5rem;
-    margin-left: 100px;
-    margin-right: 100px;
-    padding-bottom: 30px;
+    font-size: 1.5rem;   
+    margin-top: 10px;
+    
 }
 
 .quote {    
     font-family: "normal";      
-    text-align: center;
     font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
-
-.footnote-ref {
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
+a {
+  color: rgb(205, 156, 180);
+  font-weight: normal;
+  text-decoration: none;
 }
 
-.footnote-icon {
-  width: 20px; /* size of your icon */
-  height: 20px;
-}
-
-.footnote {
-  display: none;
-  font-size: 0.85em;
-  color: palevioletred;
-  margin-left: 4px;
-}
-
-.footnote a {
-  color: palevioletred;
+a:hover {
   text-decoration: underline;
 }
