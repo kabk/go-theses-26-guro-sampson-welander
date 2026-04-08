@@ -16,7 +16,12 @@ background-image: url("../images/C.png");
   display: block;
   padding-left: 20px;
   padding-right: 20px;
-  opacity: 70%;
+  opacity: 40%;
+}
+
+.lamb:hover {
+  opacity: 70%; 
+   transform: scale(1.05);
 }
 
 .lamb2 {
@@ -25,17 +30,29 @@ background-image: url("../images/C.png");
   display: block;
   padding-left: 20px;
   padding-right: 20px;
-  opacity: 70%;
+  opacity: 40%;
 }
 
+.lamb2:hover {
+  opacity: 70%; 
+   transform: scale(1.05);
+}
+
+
 .lamb3 {
-  width: 300px;
+  width: 400px;
   height: auto;
   display: block;
   padding-left: 20px;
   padding-right: 20px;
-  opacity: 70%;
+  opacity: 40%;
 }
+
+.lamb3:hover {
+  opacity: 70%; 
+   transform: scale(1.05);
+}
+
 
 .page-wrapper {
   position: relative;
