@@ -100,14 +100,14 @@ a:hover {
 
   .italic2 { font-size: 1.5rem; }
 
-  /* Wider text layout */
+
   .section {
     width: 90%;
     max-width: 800px;
     margin: 0 auto;
   }
 
-  /* Images behave better */
+
   .lamb, .lamb2, .lamb3 {
     width: 100%;
     max-width: 600px;
@@ -136,7 +136,7 @@ a:hover {
     .section {
     width: 100%;
     max-width: 100%;
-    padding: 0 15px; /* controlled spacing instead */
+    padding: 0 15px; 
   }
 
   .image-wrapper2 {
@@ -145,7 +145,7 @@ a:hover {
     align-items: center;
   }
 
-  /* ALL images same width here */
+
   .lamb, .lamb2, .lamb3 {
     width: 100%;
     max-width: 100%;
@@ -186,7 +186,7 @@ a:hover {
     align-items: center;
   }
 
-  /* FULL width images */
+
   .lamb, .lamb2, .lamb3 {
     width: 100%;
     max-width: 100%;

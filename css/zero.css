@@ -61,7 +61,7 @@ font-family: inherit;
 font-weight: inherit;
 }
 
-/* Top index bar */
+
 #top-index {
   position: fixed;
   top: 0;
@@ -113,7 +113,7 @@ html {
 }
 
 .footnote-icon {
-  width: 20px; /* size of your icon */
+  width: 20px; 
   height: 20px;
 }
 

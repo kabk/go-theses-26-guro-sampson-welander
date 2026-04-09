@@ -11,7 +11,7 @@ body {
   width: 60%;
 }
 
-/* Responsive lamb images */
+
 .lamb {
   width: 100%;
   max-width: 500px;
@@ -50,14 +50,14 @@ body {
   transform: scale(1.05);
 }
 
-/* Layout wrapper */
+
 .page-wrapper {
   position: relative;
   width: 100%;
   min-height: 100vh;
 }
 
-/* Background image wrapper */
+
 .image-wrapper {
   position: fixed;
   top: 0;
@@ -67,7 +67,7 @@ body {
   z-index: -1;
 }
 
-/* FIXED image rule */
+
 .image-wrapper img {
   position: absolute;
   top: 50%;
@@ -78,7 +78,6 @@ body {
   height: auto;
 }
 
-/* Content image wrapper */
 .image-wrapper2 {
   display: flex;
   justify-content: center;
