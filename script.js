@@ -1,55 +1,89 @@
-const indexList = document.getElementById('index-list');
+window.addEventListener('load', () => {
 
-// Convert to array and remove last 3
-const headings = Array.from(document.querySelectorAll('h2')).slice(0, -4);
+  const indexList = document.getElementById('index-list');
+  const header = document.getElementById('top-index');
 
-headings.forEach((heading, i) => {
-  if (!heading.id) heading.id = `section${i+1}`;
+  // Stop if critical elements are missing
+  if (!indexList || !header) return;
 
-  const li = document.createElement('li');
-  const a = document.createElement('a');
-  a.href = `#${heading.id}`;
+  // Get all h2 and remove last 3
+  const allHeadings = Array.from(document.querySelectorAll('h2'));
+  const headings = allHeadings.slice(0, -4);
 
-  a.textContent = heading.textContent;
+  headings.forEach((heading, i) => {
+    if (!heading.id) heading.id = `section${i + 1}`;
 
-  li.appendChild(a);
-  indexList.appendChild(li);
-});
+    const li = document.createElement('li');
+    const a = document.createElement('a');
 
+    a.href = `#${heading.id}`;
 
+    // Store both full text + number
+    a.dataset.fullText = heading.textContent.trim();
+    a.dataset.number = i + 1;
 
-const header = document.getElementById('top-index');
-const firstH2 = document.querySelector('h2');
+    // Default (desktop)
+    a.textContent = a.dataset.fullText;
 
-let lastScroll = 0;
+    li.appendChild(a);
+    indexList.appendChild(li);
+  });
 
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
+  // 🔢 Switch to numbers on smaller screens
+  function updateNavText() {
+    const links = document.querySelectorAll('#index-list a');
 
-  const h2Top = firstH2.getBoundingClientRect().top;
-
-  if (h2Top > 0) {
-
-    header.style.transform = 'translateY(-100%)';
-  } else {
-
-    if (currentScroll > lastScroll) {
-
-      header.style.transform = 'translateY(-100%)';
+    if (window.innerWidth <= 768) {
+      links.forEach(link => {
+        link.textContent = link.dataset.number;
+      });
     } else {
-
-      header.style.transform = 'translateY(0)';
+      links.forEach(link => {
+        link.textContent = link.dataset.fullText;
+      });
     }
   }
 
-  lastScroll = currentScroll;
+  // Run on load + resize
+  updateNavText();
+  window.addEventListener('resize', updateNavText);
+
+
+  // Scroll behavior (your smooth version)
+  let lastScroll = 0;
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+
+        if (currentScroll > lastScroll && currentScroll > 50) {
+          // scrolling down → hide
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          // scrolling up → show
+          header.style.transform = 'translateY(0)';
+        }
+
+        lastScroll = currentScroll;
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  });
+
 });
 
 
+// Footnote toggle
 function toggleFootnote(id) {
   const note = document.getElementById(id);
+  if (!note) return;
 
-  if (note.style.display === "none") {
+  if (note.style.display === "none" || note.style.display === "") {
     note.style.display = "inline";
   } else {
     note.style.display = "none";

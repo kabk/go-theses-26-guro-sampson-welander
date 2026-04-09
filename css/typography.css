@@ -22,18 +22,18 @@
 .text-wrapper { 
   top: 70px; left: 50%; 
   transform: translateX(-50%) scale(1); 
-  z-index: 2000; /* higher than nav's 1000 */ 
+  z-index: 2000; 
   position: relative; 
 }
 
 h2 {
     font-family: "cursive";  
-    font-size: 11rem;
+    font-size: 10rem;
     text-align: center;
     padding-top: 0px;
      margin-bottom: 10px;
     color: rgb(205, 156, 180);
- line-height: 0.8;
+ line-height: 1;
   
 }
 
@@ -79,4 +79,126 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+
+/* ===== Responsive Media Queries ===== */
+
+/* -------- Large tablets / small desktops -------- */
+@media (max-width: 1024px) {
+  h2 { font-size: 9rem; }
+
+  .indent,
+  .quote { font-size: 1.8rem; }
+
+  .italic {
+    font-size: 1.8rem;
+    margin: 20px auto;
+    max-width: 700px;
+    padding: 0 20px;
+  }
+
+  .italic2 { font-size: 1.5rem; }
+
+  /* Wider text layout */
+  .section {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Images behave better */
+  .lamb, .lamb2, .lamb3 {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    padding: 0 10px;
+  }
+}
+
+
+/* -------- Tablets -------- */
+@media (max-width: 768px) {
+  h2 { font-size: 7rem; }
+
+  .indent,
+  .quote { font-size: 1.6rem; }
+
+  .italic {
+    font-size: 1.6rem;
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 0 15px;
+  }
+
+  .italic2 { font-size: 1.3rem; }
+
+    .section {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px; /* controlled spacing instead */
+  }
+
+  .image-wrapper2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ALL images same width here */
+  .lamb, .lamb2, .lamb3 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    padding: 0 10px;
+  }
+}
+
+
+/* -------- Phones / small screens -------- */
+@media (max-width: 480px) {
+  h2 { font-size: 6rem; }
+
+  body, p,
+  .indent,
+  .italic,
+  .italic2,
+  .quote {
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+
+  .section {
+    width: 95%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .italic {
+    margin: 20px auto;
+    padding: 0 10px;
+    width: 100%;
+  }
+
+  .image-wrapper2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* FULL width images */
+  .lamb, .lamb2, .lamb3 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 15px;
+    padding: 0 5px;
+  }
+}
+
+
+/* -------- Minor fix -------- */
+@media (max-width: 1024px) {
+  .image-wrapper img {
+    object-position: center;
+  }
 }

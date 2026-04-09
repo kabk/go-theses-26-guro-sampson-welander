@@ -4,7 +4,6 @@ body {
   background-position: center;
   background-attachment: fixed;
   margin: 0;
-  height: 100vh;
 }
 
 .cover {
@@ -12,90 +11,79 @@ body {
   width: 60%;
 }
 
+/* Responsive lamb images */
 .lamb {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: auto;
   display: block;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: 0 auto 20px;
+  padding: 0 10px;
   opacity: 40%;
-}
-
-.lamb:hover {
-  opacity: 70%; 
-   transform: scale(1.05);
 }
 
 .lamb2 {
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
   height: auto;
   display: block;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: 0 auto 20px;
+  padding: 0 10px;
   opacity: 40%;
 }
-
-.lamb2:hover {
-  opacity: 70%; 
-   transform: scale(1.05);
-}
-
 
 .lamb3 {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: auto;
   display: block;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: 0 auto 20px;
+  padding: 0 10px;
   opacity: 40%;
 }
 
+/* Hover */
+.lamb:hover,
+.lamb2:hover,
 .lamb3:hover {
-  opacity: 70%; 
-   transform: scale(1.05);
+  opacity: 70%;
+  transform: scale(1.05);
 }
 
-
+/* Layout wrapper */
 .page-wrapper {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-/* Wrapper covers the whole viewport */
+/* Background image wrapper */
 .image-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;      /* full viewport height */
-  z-index: -1;        /* behind content */
-  overflow: hidden;
+  height: 100vh;
+  z-index: -1;
 }
 
+/* FIXED image rule */
 .image-wrapper img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  width: 90vw;        /* big but safe */
+  width: 90vw;
   max-width: 1000px;
   height: auto;
 }
 
-
+/* Content image wrapper */
 .image-wrapper2 {
   display: flex;
   justify-content: center;
   margin-top: 30px;
   margin-bottom: 30px;
-  overflow: hidden;
-}
-
-.image-wrapper img {
-       /* main size */
-  max-width: 1000px;   /* prevents it from getting huge on desktop */
 }
 
 /* Tablets */
@@ -103,11 +91,19 @@ body {
   .image-wrapper img {
     width: 95vw;
   }
+
+  .lamb, .lamb2, .lamb3 {
+    max-width: 100%;
+  }
 }
 
 /* Phones */
 @media (max-width: 480px) {
   .image-wrapper img {
     width: 94vw;
+  }
+
+  .lamb, .lamb2, .lamb3 {
+    max-width: 100%;
   }
 }
