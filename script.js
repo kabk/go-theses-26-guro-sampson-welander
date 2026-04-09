@@ -89,3 +89,19 @@ function toggleFootnote(id) {
     note.style.display = "none";
   }
 }
+
+const faders = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible'); // 👈 THIS enables reverse
+    }
+  });
+}, {
+  threshold: 0.3
+});
+
+faders.forEach(el => observer.observe(el));

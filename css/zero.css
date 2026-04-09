@@ -4,7 +4,7 @@ font-size: 10px;
 font-family: Arial, Helvetica, sans-serif;
 }
 
-/* FIXED BACKGROUND USING PSEUDO ELEMENT */
+
 .page-wrapper::before {
   content: "";
   position: fixed;
@@ -24,16 +24,14 @@ font-family: Arial, Helvetica, sans-serif;
 
 @media (max-width: 768px) {
   .page-wrapper::before {
-    background-image: url("../images/cover.jpg"); /* or mobile version */
-
-    background-size: contain;        /* 🔥 stops zoom */
-    background-position: center top;
-    background-repeat: no-repeat;
+    background-size: cover;             
+    background-position: center top;    
   }
 }
 
 html, body {
   overflow-x: hidden;
+      cursor: url("../images/knife.png") 0 0, auto;
 }
 .page-wrapper {
    width: 100%;
@@ -42,6 +40,7 @@ html, body {
 .main {
     margin: 0 auto;
     color: rgb(149, 149, 149);
+
 }
 
 .section {
@@ -88,13 +87,18 @@ font-weight: inherit;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgb(205, 156, 180);
   width: 100%;
   z-index: 9999;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transform: translateY(-100%); 
+
+  background: linear-gradient(
+    to bottom,
+    rgb(205, 156, 180) 75%,
+    rgba(205, 156, 180, 0) 100%
+  );
+
+ 
+  transform: translateY(-100%);
   transition: transform 0.3s ease;
-     
 }
 
 #top-index ul {
@@ -104,6 +108,7 @@ font-weight: inherit;
   list-style: none;
   margin: 0;
   padding: 10px 20px;
+  padding-bottom: 25px;
 }
 
 #top-index ul li a {

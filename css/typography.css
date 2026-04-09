@@ -34,10 +34,25 @@ h2 {
      margin-bottom: 10px;
     color: rgb(205, 156, 180);
  line-height: 1;
+ 
   
 }
 
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .indent {  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease forwards;
     font-family: "normal";
     font-style: bold;
     font-size: 1.8rem; 
@@ -196,7 +211,7 @@ a:hover {
 }
 
 
-/* -------- Minor fix -------- */
+
 @media (max-width: 1024px) {
   .image-wrapper img {
     object-position: center;
