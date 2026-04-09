@@ -202,3 +202,15 @@ a:hover {
     object-position: center;
   }
 }
+
+#index-list a {
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+  white-space: nowrap;
+}
+
+#index-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
