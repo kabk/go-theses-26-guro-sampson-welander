@@ -99,7 +99,7 @@ body {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
 
   #layer {
     content: url("../images/mobile-layer.png");

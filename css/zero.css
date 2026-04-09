@@ -21,11 +21,9 @@ font-family: Arial, Helvetica, sans-serif;
   z-index: -1;
 }
 
-
-@media (max-width: 768px) {
-  .page-wrapper::before {
-    background-size: cover;             
-    background-position: center top;    
+@media (max-width: 480px) {
+  #home::before {
+    background-image: url("../images/wowm.png"); /* Mobile background */
   }
 }
 
