@@ -1,8 +1,10 @@
 body {
-background-image: url("../images/C.png");
+  background-image: url("../images/cover.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  margin: 0;
+  height: 100vh;
 }
 
 .cover {
@@ -56,18 +58,30 @@ background-image: url("../images/C.png");
 
 .page-wrapper {
   position: relative;
+  width: 100%;
   height: 100vh;
-  overflow: hidden;
 }
 
+/* Wrapper covers the whole viewport */
 .image-wrapper {
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: -1; 
+  height: 100vh;      /* full viewport height */
+  z-index: -1;        /* behind content */
   overflow: hidden;
+}
+
+.image-wrapper img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 90vw;        /* big but safe */
+  max-width: 1000px;
+  height: auto;
 }
 
 
@@ -76,5 +90,24 @@ background-image: url("../images/C.png");
   justify-content: center;
   margin-top: 30px;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
+.image-wrapper img {
+       /* main size */
+  max-width: 1000px;   /* prevents it from getting huge on desktop */
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .image-wrapper img {
+    width: 95vw;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .image-wrapper img {
+    width: 94vw;
+  }
+}
