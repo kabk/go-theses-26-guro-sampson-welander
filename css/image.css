@@ -24,13 +24,13 @@ align-self: center;
 }
 .lamb3 {
   width: 100%;
-  height: auto;     /* 👈 key change */
+  height: auto;     
   display: block;
   margin-bottom: 20px;
   opacity: 60%;
 }
 
-/* Hover */
+
 .lamb:hover,
 .lamb2:hover,
 .lamb3:hover {
@@ -50,8 +50,8 @@ align-self: center;
 }
 
 .lamb-wrapper img {
-  flex-shrink: 0; /* 🔥 prevents image from moving/resizing */
-    align-items: center; /* 👈 keeps image position stable */
+  flex-shrink: 0; 
+    align-items: center; 
 }
 
 .page-wrapper {
@@ -86,8 +86,8 @@ align-self: center;
   margin-top: 30px;
   margin-bottom: 30px;
 
-  align-items: flex-start; /* 🔥 prevents vertical stretching weirdness */
-  gap: 20px; /* optional */
+  align-items: flex-start; 
+  gap: 20px; 
 }
 
 @media (max-width: 1024px) {

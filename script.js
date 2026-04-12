@@ -6,12 +6,12 @@ window.addEventListener('load', () => {
 
   if (!indexList || !header) return;
 
-  // ===== Get headings (EXCLUDE LAST 3 FOR NAV ONLY) =====
+
   const allHeadings = Array.from(document.querySelectorAll('h2'));
 const navHeadings = allHeadings;
-  const headings = allHeadings; // 👈 keep floating title using ALL (unchanged behavior)
+  const headings = allHeadings; 
 
-  // ===== Build index =====
+
   navHeadings.forEach((heading, i) => {
     if (!heading.id) heading.id = `section${i + 1}`;
 
@@ -30,20 +30,20 @@ const navHeadings = allHeadings;
     indexList.appendChild(li);
   });
 
-  // ===== Floating Title (UNCHANGED) =====
+  // ===== Floating Title =====
 const TRIGGER_LINE = 60;
 
 function updateFloatingTitle() {
   if (!floatingTitle || headings.length === 0) return;
 
-  // 👇 ADD THIS BLOCK RIGHT HERE
+
   if (window.innerWidth <= 768) {
     floatingTitle.style.opacity = "0";
 
-    // make sure all h2 are visible again
+
     headings.forEach(h => h.style.opacity = "1");
 
-    return; // stop the rest of the function
+    return; 
   }
 
   let current = null;
@@ -51,7 +51,7 @@ function updateFloatingTitle() {
   headings.forEach((heading) => {
     const rect = heading.getBoundingClientRect();
 
-    // reset all headings
+
     heading.style.opacity = "1";
 
     if (rect.top <= TRIGGER_LINE) {
@@ -59,17 +59,17 @@ function updateFloatingTitle() {
     }
   });
 
-  // hide before first section
+
   if (!current) {
     floatingTitle.style.opacity = "0";
     return;
   }
 
-  // update floating title
+
   floatingTitle.textContent = current.textContent.trim();
   floatingTitle.style.opacity = "1";
 
-  // hide active h2
+
   current.style.opacity = "0";
 }
 
@@ -77,7 +77,7 @@ function updateFloatingTitle() {
   window.addEventListener("scroll", updateFloatingTitle);
   window.addEventListener("resize", updateFloatingTitle);
 
-  // ===== Hide/show top bar (UNCHANGED) =====
+  // ===== Hide/show top bar  =====
   let lastScroll = 0;
   let ticking = false;
 
@@ -112,7 +112,7 @@ function toggleFootnote(id) {
 }
 
 
-// ===== Fade-in animation (UNCHANGED) =====
+// ===== Fade-in animation  =====
 const faders = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver((entries) => {

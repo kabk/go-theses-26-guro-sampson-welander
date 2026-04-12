@@ -49,7 +49,6 @@ font-size: 10rem;
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
 
-  /* IMPORTANT */
   display: block;
 }
 
@@ -69,10 +68,10 @@ color: rgb(158, 158, 158);
 
   z-index: -1;
 
-  /* ✨ THIS makes it oval */
+
   border-radius: 50%;
 
-  /* ✨ gradient */
+
   background: radial-gradient(
     ellipse at center,
     rgb(255, 255, 255) 0%,
@@ -80,7 +79,7 @@ color: rgb(158, 158, 158);
     rgba(255, 255, 255, 0) 60%
   );
 
-  /* stretch into oval */
+
   transform: scale(1.6, 1.2);
 }
 
@@ -161,7 +160,7 @@ font-size: 10rem;
 
 .footnote em {
   color: white;
-  -webkit-text-stroke: 0px; /* optional, removes grey outline */
+  -webkit-text-stroke: 0px; 
 }
 
 a {
@@ -175,7 +174,7 @@ a:hover {
 }
 
 
-/* ===== Responsive Media Queries ===== */
+
 
 /* -------- Large tablets / small desktops -------- */
 @media (max-width: 1024px) {
