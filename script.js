@@ -8,7 +8,9 @@ window.addEventListener('load', () => {
 
 
   const allHeadings = Array.from(document.querySelectorAll('h2'));
-const navHeadings = allHeadings;
+const navHeadings = window.innerWidth <= 480
+  ? allHeadings.slice(0, -1) 
+  : allHeadings;
   const headings = allHeadings; 
 
 
