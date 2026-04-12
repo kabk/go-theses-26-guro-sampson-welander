@@ -6,7 +6,8 @@
   max-width: 500px;
   height: auto;
   display: block;
-  margin: 0 auto 20px;
+margin: 0 0 20px;
+align-self: center;
   padding: 0 10px;
   opacity: 60%;
 }
@@ -16,18 +17,16 @@
   max-width: 700px;
   height: auto;
   display: block;
-  margin: 0 auto 20px;
+margin: 0 0 20px;
+align-self: center;
   padding: 0 10px;
   opacity: 60%;
 }
-
 .lamb3 {
   width: 100%;
-  max-width: 400px;
-  height: auto;
+  height: auto;     /* 👈 key change */
   display: block;
-  margin: 0 auto 20px;
-  padding: 0 10px;
+  margin-bottom: 20px;
   opacity: 60%;
 }
 
@@ -40,8 +39,19 @@
 }
 
 .lamb-wrapper {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  flex: 1;
+  max-width: 800px;
+
+  position: relative;
+}
+
+.lamb-wrapper img {
+  flex-shrink: 0; /* 🔥 prevents image from moving/resizing */
+    align-items: center; /* 👈 keeps image position stable */
 }
 
 .page-wrapper {
@@ -60,7 +70,7 @@
 }
 
 .image-wrapper img {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -75,6 +85,23 @@
   justify-content: center;
   margin-top: 30px;
   margin-bottom: 30px;
+
+  align-items: flex-start; /* 🔥 prevents vertical stretching weirdness */
+  gap: 20px; /* optional */
+}
+
+@media (max-width: 1024px) {
+  .image-wrapper img {
+    object-position: center;
+  }
+
+  
+  .lamb, .lamb2, .lamb3 {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    padding: 0 10px;
+  }
 }
 
 
@@ -86,6 +113,20 @@
   .lamb3 {
     max-width: 100%;
   }
+
+    .image-wrapper2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .lamb, .lamb2, .lamb3 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    padding: 0 10px;
+  }
 }
 
 /* Phones */
@@ -95,6 +136,27 @@
   .lamb2,
   .lamb3 {
     max-width: 100%;
+  }
+
+    .image-wrapper2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .lamb-wrapper {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+
+  .lamb, .lamb2, .lamb3 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 15px;
+    padding: 0 5px;
   }
 }
 

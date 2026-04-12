@@ -14,29 +14,13 @@
 }
 
 @font-face {
-  font-family: "cursive";
-  src: url("../font/Edw.ttf") format("truetype");
+  font-family: "BBBL";
+  src: url("../font/BBBDMSans-Light.ttf") format("truetype");
 }
 
-#floating-title {
-  position: fixed;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-
+@font-face {
   font-family: "cursive";
-
-  line-height: 0.9;
-  text-align: center;
-  color: rgb(205, 156, 180);
-
-  z-index: 999;
-
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-
-  /* IMPORTANT */
-  display: block;
+  src: url("../font/Edw.ttf") format("truetype");
 }
 
 h2,
@@ -46,7 +30,35 @@ h2,
   width: 60vw;
   padding: 20px 60px;
   text-align: center;
-  font-size: 10rem;
+}
+
+#floating-title {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+font-size: 10rem;
+  font-family: "cursive";
+
+  line-height: 0.9;
+  text-align: center;
+  color: rgb(205, 156, 180);
+-webkit-text-stroke: 0.8px rgb(205, 156, 180);
+  z-index: 999;
+
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  /* IMPORTANT */
+  display: block;
+}
+
+em {
+font-family: "BBB";
+font-size: 2rem;
+font-style: normal;
+-webkit-text-stroke: 0px;
+color: rgb(158, 158, 158);
 }
 
 
@@ -76,7 +88,7 @@ h2 {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-
+font-size: 10rem;
   margin: 0;
 
   font-family: "cursive";  
@@ -84,7 +96,7 @@ h2 {
   text-align: center;
   line-height: 0.9;
   color: rgb(205, 156, 180);
-
+-webkit-text-stroke: 0.8px rgb(205, 156, 180);
 
 }
 
@@ -106,16 +118,22 @@ h2 {
     font-family: "BBB";
     font-style: normal;
     font-weight: normal;
-    font-size: 1.8rem; 
+    font-size: 2rem; 
     margin-top: 15px;
     margin-bottom: 15px;
+        color: rgb(189, 189, 189);
+    -webkit-text-stroke: 0.5px rgb(156, 156, 156);
 }
+
+
 
 .italic {    
     font-family: "BBB";
-    font-style: italic;
+    font-style: normal;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    color: rgb(158, 158, 158);
+
     margin-left: 100px;
     margin-right: 100px;
     margin-top: 20px;
@@ -124,7 +142,8 @@ h2 {
 .italic2 {    
     font-family: "BBB";
     font-style: normal;
-    text-align: center;
+  text-align: center;
+  width: 100%;
     font-size: 2rem;   
     margin-top: 10px;
     color: rgb(189, 189, 189);
@@ -133,9 +152,16 @@ h2 {
 
 .quote {    
     font-family: "BBB";      
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-top: 10px;
     margin-bottom: 30px;
+    color: rgb(189, 189, 189);
+    -webkit-text-stroke: 0.5px rgb(156, 156, 156);
+}
+
+.footnote em {
+  color: white;
+  -webkit-text-stroke: 0px; /* optional, removes grey outline */
 }
 
 a {
@@ -154,9 +180,10 @@ a:hover {
 /* -------- Large tablets / small desktops -------- */
 @media (max-width: 1024px) {
   h2,
-  #floating-title { font-size: 10rem; }
+  #floating-title { font-size: 8rem; }
 
-  .indent,
+  .indent, em,
+  .footnote,
   .quote { font-size: 1.8rem; }
 
   .italic {
@@ -174,26 +201,19 @@ a:hover {
     max-width: 800px;
     margin: 0 auto;
   }
-
-
-  .lamb, .lamb2, .lamb3 {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 20px;
-    padding: 0 10px;
-  }
 }
 
 
 /* -------- Tablets -------- */
 @media (max-width: 768px) {
   h2,
-  #floating-title { font-size: 8rem; 
+  #floating-title { font-size: 6rem; 
   width: 90vw;
     padding: 15px 20px;
   }
 
-  .indent,
+  .indent, em,
+  .footnote,
   .quote { font-size: 1.8rem; }
 
   .italic {
@@ -210,38 +230,36 @@ a:hover {
     max-width: 100%;
     padding: 0 15px; 
   }
-
-  .image-wrapper2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-
-  .lamb, .lamb2, .lamb3 {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto 20px;
-    padding: 0 10px;
-  }
 }
 
 
 /* -------- Phones / small screens -------- */
 @media (max-width: 480px) {
   h2,
-  #floating-title { font-size: 7rem; 
+  #floating-title { font-size: 5rem; 
   width: 95vw;
     padding: 10px 15px;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
 
-  body, p,
+  body, p, em,
+  .footnote,
   .indent,
   .italic,
   .italic2,
   .quote {
     font-size: 1.6rem;
   }
+
+.indent {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.indent::first-line {
+  text-indent: 50px;
+}
 
   .section {
     width: 95%;
@@ -254,29 +272,8 @@ a:hover {
     padding: 0 10px;
     width: 100%;
   }
-
-  .image-wrapper2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-
-  .lamb, .lamb2, .lamb3 {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto 15px;
-    padding: 0 5px;
-  }
 }
 
-
-
-@media (max-width: 1024px) {
-  .image-wrapper img {
-    object-position: center;
-  }
-}
 
 #index-list a {
   font-size: clamp(0.8rem, 1.5vw, 1.2rem);

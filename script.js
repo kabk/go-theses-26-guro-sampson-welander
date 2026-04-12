@@ -8,7 +8,7 @@ window.addEventListener('load', () => {
 
   // ===== Get headings (EXCLUDE LAST 3 FOR NAV ONLY) =====
   const allHeadings = Array.from(document.querySelectorAll('h2'));
-  const navHeadings = allHeadings.slice(0, -3); // 👈 ONLY CHANGE
+const navHeadings = allHeadings;
   const headings = allHeadings; // 👈 keep floating title using ALL (unchanged behavior)
 
   // ===== Build index =====
@@ -31,37 +31,47 @@ window.addEventListener('load', () => {
   });
 
   // ===== Floating Title (UNCHANGED) =====
-  const TRIGGER_LINE = 50;
+const TRIGGER_LINE = 60;
 
-  function updateFloatingTitle() {
-    if (!floatingTitle || headings.length === 0) return;
+function updateFloatingTitle() {
+  if (!floatingTitle || headings.length === 0) return;
 
-    let current = null;
+  // 👇 ADD THIS BLOCK RIGHT HERE
+  if (window.innerWidth <= 768) {
+    floatingTitle.style.opacity = "0";
 
-    headings.forEach((heading) => {
-      const rect = heading.getBoundingClientRect();
+    // make sure all h2 are visible again
+    headings.forEach(h => h.style.opacity = "1");
 
-      // reset all headings
-      heading.style.opacity = "1";
-
-      if (rect.top <= TRIGGER_LINE) {
-        current = heading;
-      }
-    });
-
-    // hide before first section
-    if (!current) {
-      floatingTitle.style.opacity = "0";
-      return;
-    }
-
-    // update floating title
-    floatingTitle.textContent = current.textContent.trim();
-    floatingTitle.style.opacity = "1";
-
-    // hide active h2
-    current.style.opacity = "0";
+    return; // stop the rest of the function
   }
+
+  let current = null;
+
+  headings.forEach((heading) => {
+    const rect = heading.getBoundingClientRect();
+
+    // reset all headings
+    heading.style.opacity = "1";
+
+    if (rect.top <= TRIGGER_LINE) {
+      current = heading;
+    }
+  });
+
+  // hide before first section
+  if (!current) {
+    floatingTitle.style.opacity = "0";
+    return;
+  }
+
+  // update floating title
+  floatingTitle.textContent = current.textContent.trim();
+  floatingTitle.style.opacity = "1";
+
+  // hide active h2
+  current.style.opacity = "0";
+}
 
   updateFloatingTitle();
   window.addEventListener("scroll", updateFloatingTitle);
@@ -94,16 +104,11 @@ window.addEventListener('load', () => {
 });
 
 
-// ===== Footnotes (UNCHANGED) =====
 function toggleFootnote(id) {
   const note = document.getElementById(id);
   if (!note) return;
 
-  if (note.style.display === "none" || note.style.display === "") {
-    note.style.display = "inline";
-  } else {
-    note.style.display = "none";
-  }
+  note.classList.toggle("show");
 }
 
 
