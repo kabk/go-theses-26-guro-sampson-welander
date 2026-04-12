@@ -2,15 +2,17 @@ window.addEventListener('load', () => {
 
   const indexList = document.getElementById('index-list');
   const header = document.getElementById('top-index');
-
+  const floatingTitle = document.getElementById("floating-title");
 
   if (!indexList || !header) return;
 
-  // Get all h2 and remove last 4
+  // ===== Get headings (EXCLUDE LAST 3 FOR NAV ONLY) =====
   const allHeadings = Array.from(document.querySelectorAll('h2'));
-  const headings = allHeadings.slice(0, -4);
+  const navHeadings = allHeadings.slice(0, -3); // 👈 ONLY CHANGE
+  const headings = allHeadings; // 👈 keep floating title using ALL (unchanged behavior)
 
-  headings.forEach((heading, i) => {
+  // ===== Build index =====
+  navHeadings.forEach((heading, i) => {
     if (!heading.id) heading.id = `section${i + 1}`;
 
     const li = document.createElement('li');
@@ -18,38 +20,54 @@ window.addEventListener('load', () => {
 
     a.href = `#${heading.id}`;
 
+    const navText = heading.dataset.nav || heading.textContent.trim();
 
-    a.dataset.fullText = heading.textContent.trim();
+    a.dataset.fullText = navText;
     a.dataset.number = i + 1;
-
-   
-    a.textContent = a.dataset.fullText;
+    a.textContent = navText;
 
     li.appendChild(a);
     indexList.appendChild(li);
   });
 
+  // ===== Floating Title (UNCHANGED) =====
+  const TRIGGER_LINE = 50;
 
-  function updateNavText() {
-    const links = document.querySelectorAll('#index-list a');
+  function updateFloatingTitle() {
+    if (!floatingTitle || headings.length === 0) return;
 
-    if (window.innerWidth <= 768) {
-      links.forEach(link => {
-        link.textContent = link.dataset.number;
-      });
-    } else {
-      links.forEach(link => {
-        link.textContent = link.dataset.fullText;
-      });
+    let current = null;
+
+    headings.forEach((heading) => {
+      const rect = heading.getBoundingClientRect();
+
+      // reset all headings
+      heading.style.opacity = "1";
+
+      if (rect.top <= TRIGGER_LINE) {
+        current = heading;
+      }
+    });
+
+    // hide before first section
+    if (!current) {
+      floatingTitle.style.opacity = "0";
+      return;
     }
+
+    // update floating title
+    floatingTitle.textContent = current.textContent.trim();
+    floatingTitle.style.opacity = "1";
+
+    // hide active h2
+    current.style.opacity = "0";
   }
 
+  updateFloatingTitle();
+  window.addEventListener("scroll", updateFloatingTitle);
+  window.addEventListener("resize", updateFloatingTitle);
 
-  updateNavText();
-  window.addEventListener('resize', updateNavText);
-
-
-
+  // ===== Hide/show top bar (UNCHANGED) =====
   let lastScroll = 0;
   let ticking = false;
 
@@ -60,10 +78,8 @@ window.addEventListener('load', () => {
       window.requestAnimationFrame(() => {
 
         if (currentScroll > lastScroll && currentScroll > 50) {
-          // scrolling down → hide
           header.style.transform = 'translateY(-100%)';
         } else {
-          // scrolling up → show
           header.style.transform = 'translateY(0)';
         }
 
@@ -78,7 +94,7 @@ window.addEventListener('load', () => {
 });
 
 
-
+// ===== Footnotes (UNCHANGED) =====
 function toggleFootnote(id) {
   const note = document.getElementById(id);
   if (!note) return;
@@ -90,6 +106,8 @@ function toggleFootnote(id) {
   }
 }
 
+
+// ===== Fade-in animation (UNCHANGED) =====
 const faders = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver((entries) => {
@@ -97,7 +115,7 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
     } else {
-      entry.target.classList.remove('visible'); // 👈 THIS enables reverse
+      entry.target.classList.remove('visible');
     }
   });
 }, {
