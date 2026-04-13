@@ -23,39 +23,33 @@
   src: url("../font/Edw.ttf") format("truetype");
 }
 
-h2,
-#floating-title {
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60vw;
-  padding: 20px 60px;
-  text-align: center;
-}
 
 #floating-title {
   position: fixed;
   top: 40px;
   left: 50%;
   transform: translateX(-50%);
-font-size: 10rem;
-  font-family: "cursive";
 
-  line-height: 0.9;
-  text-align: center;
-  color: rgb(205, 156, 180);
--webkit-text-stroke: 0.8px rgb(205, 156, 180);
+  width: auto;
+  height: auto;
+  padding: 0;    
+
   z-index: 999;
-
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease;
+}
 
+
+#floating-img {
+  height: clamp(60px, 10vw, 120px);         
+  width: auto;
   display: block;
 }
 
 em {
 font-family: "BBB";
 font-size: 2rem;
-font-style: normal;
+font-style: italic;
 -webkit-text-stroke: 0px;
 color: rgb(158, 158, 158);
 }
@@ -98,15 +92,17 @@ h2 {
   transform: translateX(-50%);
 font-size: 10rem;
   margin: 0;
-
+  padding-top: 40px;
+  padding-bottom: 40px;
   font-family: "cursive";  
-  
+  z-index: 1;
   text-align: center;
   line-height: 0.9;
-  color: rgb(205, 156, 180);
--webkit-text-stroke: 0.8px rgb(205, 156, 180);
+color: transparent;
 
 }
+
+
 
 .fade-in {
   opacity: 0;
@@ -137,7 +133,7 @@ font-size: 10rem;
 
 .italic {    
     font-family: "BBB";
-    font-style: normal;
+    font-style: italic;
     text-align: center;
     font-size: 2rem;
     color: rgb(158, 158, 158);

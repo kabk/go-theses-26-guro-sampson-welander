@@ -3,17 +3,20 @@ window.addEventListener('load', () => {
   const indexList = document.getElementById('index-list');
   const header = document.getElementById('top-index');
   const floatingTitle = document.getElementById("floating-title");
+  const floatingImg = document.getElementById("floating-img");
 
   if (!indexList || !header) return;
 
-
+  // ===== Headings =====
   const allHeadings = Array.from(document.querySelectorAll('h2'));
-const navHeadings = window.innerWidth <= 480
-  ? allHeadings.slice(0, -1) 
-  : allHeadings;
-  const headings = allHeadings; 
 
+  const navHeadings = window.innerWidth <= 480
+    ? allHeadings.slice(0, -1)
+    : allHeadings;
 
+  const headings = allHeadings;
+
+  // ===== Build nav =====
   navHeadings.forEach((heading, i) => {
     if (!heading.id) heading.id = `section${i + 1}`;
 
@@ -32,54 +35,61 @@ const navHeadings = window.innerWidth <= 480
     indexList.appendChild(li);
   });
 
-  // ===== Floating Title =====
-const TRIGGER_LINE = 60;
+  // ===== Floating Image =====
+const TRIGGER_LINE = floatingTitle.offsetTop;
+  let currentImg = ""; 
 
-function updateFloatingTitle() {
-  if (!floatingTitle || headings.length === 0) return;
+  function updateFloatingTitle() {
+    if (!floatingTitle || headings.length === 0) return;
 
-
-  if (window.innerWidth <= 768) {
-    floatingTitle.style.opacity = "0";
-
-
-    headings.forEach(h => h.style.opacity = "1");
-
-    return; 
-  }
-
-  let current = null;
-
-  headings.forEach((heading) => {
-    const rect = heading.getBoundingClientRect();
-
-
-    heading.style.opacity = "1";
-
-    if (rect.top <= TRIGGER_LINE) {
-      current = heading;
+    // hide on small screens
+    if (window.innerWidth <= 768) {
+      floatingTitle.style.opacity = "0";
+      headings.forEach(h => h.style.opacity = "1");
+      return;
     }
-  });
+
+    let current = null;
+
+    headings.forEach((heading) => {
+      const rect = heading.getBoundingClientRect();
+
+      heading.style.opacity = "1";
+
+      if (rect.top <= TRIGGER_LINE - 10) {
+        current = heading;
+      }
+    });
+
+    if (!current) {
+      floatingTitle.style.opacity = "0";
+      return;
+    }
+
+    const newImg = current.dataset.img;
 
 
-  if (!current) {
-    floatingTitle.style.opacity = "0";
-    return;
+    if (newImg && floatingImg && newImg !== currentImg) {
+      currentImg = newImg;
+
+      floatingImg.style.opacity = "0";
+
+      setTimeout(() => {
+        floatingImg.src = newImg;
+        floatingImg.style.opacity = "1";
+      }, 100);
+    }
+
+    floatingTitle.style.opacity = "1";
+    current.style.opacity = "0";
   }
 
-
-  floatingTitle.textContent = current.textContent.trim();
-  floatingTitle.style.opacity = "1";
-
-
-  current.style.opacity = "0";
-}
-
+  // run + listeners
   updateFloatingTitle();
   window.addEventListener("scroll", updateFloatingTitle);
   window.addEventListener("resize", updateFloatingTitle);
 
-  // ===== Hide/show top bar  =====
+  // ===== Hide/show top bar =====
   let lastScroll = 0;
   let ticking = false;
 
@@ -106,6 +116,7 @@ function updateFloatingTitle() {
 });
 
 
+// ===== Footnote toggle =====
 function toggleFootnote(id) {
   const note = document.getElementById(id);
   if (!note) return;
@@ -114,7 +125,7 @@ function toggleFootnote(id) {
 }
 
 
-// ===== Fade-in animation  =====
+// ===== Fade-in animation =====
 const faders = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver((entries) => {
