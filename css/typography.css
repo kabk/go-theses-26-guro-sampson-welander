@@ -1,12 +1,4 @@
-@font-face {
-  font-family: "normal";
-  src: url("../font/BBB-OpenSans-Regular.ttf") format("truetype");
-}
 
-@font-face {
-  font-family: "headline";
-  src: url("../font/headline.ttf") format("truetype");
-}
 
 @font-face {
   font-family: "BBB";
@@ -90,16 +82,27 @@ h2 {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-font-size: 10rem;
+  font-size: 10rem;
+
   margin: 0;
   padding-top: 40px;
   padding-bottom: 40px;
-  font-family: "cursive";  
-  z-index: 1;
+
+  font-family: "cursive";
   text-align: center;
   line-height: 0.9;
-color: transparent;
+  color: transparent;
+}
 
+
+.h2-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: clamp(60px, 10vw, 120px);
+  width: auto;
+  z-index: 2;
 }
 
 
@@ -239,14 +242,6 @@ a:hover {
 
 /* -------- Phones / small screens -------- */
 @media (max-width: 480px) {
-  h2,
-  #floating-title { font-size: 5rem; 
-  width: 95vw;
-    padding: 10px 15px;
-    margin-bottom: 15px;
-    margin-top: 15px;
-  }
-
   body, p, em,
   .footnote,
   .indent,
@@ -299,3 +294,15 @@ a:hover {
   gap: 10px;
 }
 
+@media (max-width: 480px) {
+  .h2-icon {
+    height: clamp(180px, 20vw, 400px); /* size only */
+  }
+
+  .h2-wrapper {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+
+  }
+}

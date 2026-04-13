@@ -54,7 +54,11 @@ html, body {
   );
 }
 
-
+@media (max-width: 480px) {
+ .main {
+  padding-top: 20px;
+ }
+}
 .section {
     max-width: 50%;
     margin: 0 auto;

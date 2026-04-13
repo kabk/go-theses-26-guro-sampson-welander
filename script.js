@@ -10,14 +10,16 @@ window.addEventListener('load', () => {
   // ===== Headings =====
   const allHeadings = Array.from(document.querySelectorAll('h2'));
 
-  const navHeadings = window.innerWidth <= 480
-    ? allHeadings.slice(0, -1)
-    : allHeadings;
+const isSmallScreen = window.innerWidth <= 480;
+
+const headingsToUse = isSmallScreen
+  ? allHeadings.slice(0, -1)
+  : allHeadings;
 
   const headings = allHeadings;
 
   // ===== Build nav =====
-  navHeadings.forEach((heading, i) => {
+  headingsToUse.forEach((heading, i) =>  {
     if (!heading.id) heading.id = `section${i + 1}`;
 
     const li = document.createElement('li');
