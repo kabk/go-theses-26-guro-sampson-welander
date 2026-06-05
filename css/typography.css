@@ -48,6 +48,7 @@ color: rgb(158, 158, 158);
 .footnote {
   font-size: inherit;
   color: white;
+  text-align: center;
 }
 
 .footnote a {
